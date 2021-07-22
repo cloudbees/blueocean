@@ -47,6 +47,8 @@
     <jacoco.missedclass.coverage>0.00</jacoco.missedclass.coverage>
     <hpi.dependencyResolution>runtime</hpi.dependencyResolution>
     <access-modifier-checker.failOnError>true</access-modifier-checker.failOnError>
+    <!-- override this as memory in parent pom is not big enough -->
+    <argLine>-Xmx2g -Xms2g -Djava.awt.headless=true -XX:+HeapDumpOnOutOfMemoryError -XX:+TieredCompilation -XX:TieredStopAtLevel=1</argLine>
   </properties>
 
   <scm>
@@ -276,6 +278,30 @@
             <type>pom</type>
         </dependency>
 
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>pipeline-build-step</artifactId>
+            <version>2.14</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>structs</artifactId>
+            <version>1.23</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jenkins-ci</groupId>
+            <artifactId>symbol-annotation</artifactId>
+            <version>1.23</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>script-security</artifactId>
+            <version>1.77</version>
+        </dependency>
+
         <!-- Module versions -->
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -449,7 +475,7 @@
         <dependency>
             <groupId>io.jenkins.plugins</groupId>
             <artifactId>caffeine-api</artifactId>
-            <version>2.9.0-17.v79e9099a51e3</version>
+            <version>2.9.1-23.v51c4e2c879c8</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
